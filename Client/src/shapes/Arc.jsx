@@ -76,12 +76,12 @@ const App = () => {
       id: 'arc1',
       x: window.innerWidth / 2,
       y: window.innerHeight / 2,
-      innerRadius: 40,
-      outerRadius: 70,
-      angle: 60,
+      innerRadius: 30,
+      outerRadius: 60,
+      angle: 90,
       fill: 'yellow',
       stroke: 'black',
-      strokeWidth: 4,
+      strokeWidth: 2,
       rotation: 0
     }
   ]);
@@ -101,12 +101,15 @@ const App = () => {
       arc.id === newAttrs.id ? newAttrs : arc
     ));
   };
-
+  const minX = window.innerWidth * 0.2;
+  const maxX = window.innerWidth * 0.8;
+  const minY = window.innerHeight * 0.3;
+  const maxY = window.innerHeight * 0.7;
   const addNewArc = () => {
     const newArc = {
       id: `arc${arcs.length + 1}`,
-      x: Math.random() * (window.innerWidth - 200) + 100,
-      y: Math.random() * (window.innerHeight - 200) + 100,
+      x: (minX + maxX) / 2,  // Center X of the range
+      y: (minY + maxY) / 2,  // Center Y of the range
       innerRadius: 30,
       outerRadius: 60,
       angle: 90,
