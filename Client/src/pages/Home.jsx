@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Outlet,Link} from 'react-router-dom'
-import { ArrowRight, Users, Zap, Globe, Play } from 'lucide-react';
+import { ArrowRight, Users, Zap, Globe, Play, CheckSquare } from 'lucide-react';
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -155,6 +155,20 @@ const Home = () => {
       textDecoration: 'none',
       display: 'inline-block'
     },
+    taskBtn: {
+      padding: '8px 16px',
+      backgroundColor: '#10b981',
+      color: 'white',
+      border: 'none',
+      borderRadius: '8px',
+      cursor: 'pointer',
+      fontSize: '16px',
+      transition: 'all 0.2s ease',
+      textDecoration: 'none',
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: '8px'
+    },
     main: {
       position: 'relative',
       zIndex: 10,
@@ -204,6 +218,21 @@ const Home = () => {
       gap: '8px',
       padding: '16px 32px',
       backgroundColor: '#3b82f6',
+      color: 'white',
+      border: 'none',
+      borderRadius: '12px',
+      fontSize: '16px',
+      fontWeight: '500',
+      cursor: 'pointer',
+      transition: 'all 0.2s ease',
+      textDecoration: 'none'
+    },
+    heroTaskBtn: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+      padding: '16px 32px',
+      backgroundColor: '#10b981',
       color: 'white',
       border: 'none',
       borderRadius: '12px',
@@ -340,40 +369,6 @@ const Home = () => {
       padding: '0 24px',
       textAlign: 'center',
       color: '#6b7280'
-    },
-    // Responsive styles
-    '@media (max-width: 768px)': {
-      heroTitle: {
-        fontSize: '3rem'
-      },
-      heroDescription: {
-        fontSize: '18px'
-      },
-      heroButtons: {
-        flexDirection: 'column',
-        alignItems: 'stretch'
-      },
-      navLinks: {
-        gap: '16px'
-      },
-      navContainer: {
-        flexDirection: 'column',
-        gap: '24px'
-      },
-      previewCanvas: {
-        height: '300px'
-      }
-    },
-    '@media (max-width: 480px)': {
-      heroTitle: {
-        fontSize: '2.5rem'
-      },
-      main: {
-        padding: '40px 16px 64px'
-      },
-      nav: {
-        padding: '16px'
-      }
     }
   };
 
@@ -464,10 +459,9 @@ const Home = () => {
                 e.target.style.boxShadow = 'none';
               }}
             >
-              <span><Link to='/room'>Start Creating</Link></span>
+              <span><Link to='/room' style={{color: 'white', textDecoration: 'none'}}>Start Creating</Link></span>
               <ArrowRight size={20} />
             </button>
-            
             <button 
               style={styles.heroSecondaryBtn}
               onMouseEnter={(e) => {

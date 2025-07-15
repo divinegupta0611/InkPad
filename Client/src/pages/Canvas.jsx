@@ -220,7 +220,10 @@ const Canvas = () => {
   const socketRef = useRef(null);
   const roomId = location?.state?.room?.id;
   const userId = location?.state?.userId;
-
+  useEffect(()=>{
+    console.log(roomId);
+    console.log(userId);
+  },[])
   useEffect(() => {
   socketRef.current = io('http://localhost:5000');
 
@@ -546,7 +549,7 @@ const emitCanvasCleared = () => {
         overflowY: 'auto'
       }}>
         <h3 style={{ margin: '0 0 10px 0' }}>Drawing Tools</h3>
-        
+        <h4>Room Id: {roomId}</h4>
         {/* Undo/Redo */}
         <div style={{ display: 'flex', gap: '8px', marginBottom: '15px' }}>
           <button onClick={undo} disabled={historyIndex <= 0} style={{
