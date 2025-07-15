@@ -92,7 +92,7 @@ app.post('/api/rooms/create', (req, res) => {
     rooms.set(roomId, room);
     
     console.log(`Room created: ${roomId} with name: ${room.name}`);
-    
+    console.log(`RoomId: ${roomId}`);
     const response = { 
       roomId: roomId, 
       room: room,
@@ -153,16 +153,13 @@ app.get('/api', (req, res) => {
     totalUsers: activeUsers.size
   });
 });
-
 // Socket.IO connection handling
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
-
   // Join a room
   socket.on('join-room', (data) => {
     try {
       const { roomId, username } = data;
-      
       console.log(`Join room request: ${username} -> ${roomId}`);
       
       if (!roomId || !username) {
@@ -416,7 +413,6 @@ io.on('connection', (socket) => {
   // Handle disconnect
   socket.on('disconnect', () => {
     console.log('User disconnected:', socket.id);
-    
     try {
       const user = activeUsers.get(socket.id);
       if (user) {
